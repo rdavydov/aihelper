@@ -7,7 +7,7 @@ import sys, os, json, urllib.request
 API_KEY = os.getenv("OPENAI_API_KEY", "local")
 API_URL = os.getenv("AI_BASH_URL",
                      "http://localhost:11434/v1/chat/completions")
-MODEL   = os.getenv("AI_BASH_MODEL", "qwen3:latest")
+MODEL   = os.getenv("AI_BASH_MODEL", "dolphin3:latest") # non-thinking model, fast inference
 
 SYSTEM = (
     "Ты — терминальный ассистент. Пользователь описывает задачу "
