@@ -1,7 +1,7 @@
 # credits: https://habr.com/ru/articles/1001214/
 
 #!/usr/bin/env python3
-"""ai-bash: спрашиваю по-русски — получаю bash"""
+"""aihelper: ask in English — get bash commands"""
 import sys, os, json, urllib.request
 
 API_KEY = os.getenv("OPENAI_API_KEY", "local")
@@ -10,10 +10,10 @@ API_URL = os.getenv("AI_BASH_URL",
 MODEL   = os.getenv("AI_BASH_MODEL", "dolphin3:latest") # non-thinking model, fast inference
 
 SYSTEM = (
-    "Ты — терминальный ассистент. Пользователь описывает задачу "
-    "на русском языке. Отвечай ТОЛЬКО bash-командой — одной строкой. "
-    "Без пояснений, без markdown, без обратных кавычек. "
-    "Несколько команд — через && или |. ОС: Linux."
+    "You are a terminal assistant. The user describes the task "
+    "in English. Answer ONLY with a single line bash command. "
+    "No explanation, no markdown, no backticks. "
+    "Multiple commands — use && or |. OS: Linux."
 )
 
 def ask(question: str) -> str:
@@ -39,13 +39,13 @@ def ask(question: str) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("Использование: ai 'найди файлы больше 100мб'")
+        print("Usage: ai 'find files larger than 100 MB'")
         sys.exit(1)
 
     cmd = ask(" ".join(sys.argv[1:]))
     print(f"\n  \033[1;33m➜  {cmd}\033[0m\n")
 
-    if input("Выполнить? [y/N] ").strip().lower() in ("y", "д"):
+    if input("Execute? [y/N] ").strip().lower() in ("y", "д"): # "д" for RU
         os.system(cmd)
 
 if __name__ == "__main__":
