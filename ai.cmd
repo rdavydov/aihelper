@@ -1,1 +1,1 @@
-@python aihelper.py %*
+@python D:\code\github\aihelper\aihelper.py %*
