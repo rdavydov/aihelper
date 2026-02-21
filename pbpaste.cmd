@@ -1,2 +1,1 @@
-@echo off
-powershell -command "Get-Clipboard"
+@powershell -command "Get-Clipboard"
